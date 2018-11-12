@@ -1,0 +1,60 @@
+
+
+SELECT c.Firstname, sum(total)
+FROM customer c
+JOIN invoice i
+ON c.customerid = i.customerid
+JOIN  InvoiceLine
+ ON  i.invoiceid = InvoiceLine.InvoiceId
+JOIN Track
+ ON InvoiceLine.TrackId = Track.TrackId
+GROUP BY c.Firstname
+ORDER BY total desc
+
+...............................................................
+
+SELECT c.Firstname,  COUNT(*)  num_invoice
+FROM customer c
+JOIN invoice i
+ON  c.customerid = i.customerid
+JOIN InvoiceLine il
+ ON i.invoiceid = il.InvoiceId
+JOIN Track
+ ON il.TrackId = Track.TrackId
+GROUP BY c.Firstname
+ORDER BY num_invoice DESC
+
+
+...............................................................
+
+SELECT  g.Name, COUNT(*)  stock
+FROM Customer c
+JOIN Invoice i
+  ON c.customerid = i.customerid
+JOIN InvoiceLine il
+  ON i.invoiceid = il.InvoiceId
+JOIN Track t
+  ON il.TrackId = t.TrackId
+
+................................................................
+
+SELECT c.Firstname, Avg(i.total) avg_total
+FROM customer c
+JOIN invoice i
+ON c.customerid = i.customerid
+JOIN  InvoiceLine
+ ON  i.invoiceid = InvoiceLine.InvoiceId
+JOIN Track
+ ON InvoiceLine.TrackId = Track.TrackId
+GROUP BY c.Firstname
+ORDER BY total desc
+
+
+JOIN Genre g
+  ON g.GenreId = t.GenreId
+GROUP BY g.Name
+ORDER BY stock DESC
+
+
+..................................................................
+
